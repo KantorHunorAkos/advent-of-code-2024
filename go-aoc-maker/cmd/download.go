@@ -33,7 +33,7 @@ func DownloadForDay(day string) error {
 
 	req, err := http.NewRequest(
 		http.MethodGet,
-		fmt.Sprintf("https://adventofcode.com/2024/day/%d/input", dayNum),
+		fmt.Sprintf("https://adventofcode.com/2023/day/%d/input", dayNum),
 		nil,
 	)
 	if err != nil {
@@ -59,7 +59,7 @@ func DownloadForDay(day string) error {
 
 	pleaseResponse := []byte("Puzzle inputs differ by user.  Please log in to get your puzzle input.")
 	if bytes.Contains(content, pleaseResponse) {
-		fmt.Fprint(os.Stderr, "Please log in to get your puzzle input.")
+		fmt.Fprint(os.Stderr, "Please log in to get your puzzle input.\n")
 		return err
 	}
 
