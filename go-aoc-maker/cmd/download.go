@@ -33,7 +33,7 @@ func DownloadForDay(day string) error {
 
 	req, err := http.NewRequest(
 		http.MethodGet,
-		fmt.Sprintf("https://adventofcode.com/2023/day/%d/input", dayNum),
+		fmt.Sprintf("https://adventofcode.com/2024/day/%d/input", dayNum),
 		nil,
 	)
 	if err != nil {
