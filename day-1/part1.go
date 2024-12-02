@@ -1,12 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"math"
 	"sort"
 )
 
-func part1(ids1 []int, ids2 []int) {
+func part1(ids1 []int, ids2 []int) int {
 	sort.Ints(ids1)
 	sort.Ints(ids2)
 
@@ -17,5 +16,5 @@ func part1(ids1 []int, ids2 []int) {
 		sum += int(math.Abs(float64(ids1[i] - ids2[i])))
 	}
 
-	fmt.Println(sum)
+	return sum
 }

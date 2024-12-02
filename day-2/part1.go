@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
-
-func part1(data [][]int) {
+func part1(data [][]int) int {
 	sum := 0
 
 	for _, row := range data {
@@ -13,7 +9,7 @@ func part1(data [][]int) {
 		}
 	}
 
-	fmt.Println(sum)
+	return sum
 }
 
 func isSafe(row []int) bool {

@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
-
-func part2(ids1 []int, ids2 []int) {
+func part2(ids1 []int, ids2 []int) int {
 	map1 := make(map[int]int)
 
 	for _, value := range ids1 {
@@ -23,5 +19,5 @@ func part2(ids1 []int, ids2 []int) {
 		sum += v * k * map2[k]
 	}
 
-	fmt.Println(sum)
+	return sum
 }

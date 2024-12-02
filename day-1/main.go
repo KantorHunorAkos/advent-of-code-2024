@@ -10,10 +10,26 @@ import (
 )
 
 func main() {
-	file, err := os.Open("data.input")
+	ids1, ids2 := getIds("data.input")
+
+	fmt.Println("Running part1")
+	start := time.Now()
+	solution := part1(ids1, ids2)
+	duration := time.Until(start).Abs()
+	fmt.Printf("Part one ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
+
+	fmt.Println("Running part2")
+	start = time.Now()
+	solution = part2(ids1, ids2)
+	duration = time.Until(start).Abs()
+	fmt.Printf("Part two ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
+}
+
+func getIds(filename string) ([]int, []int) {
+	file, err := os.Open(filename)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "An error occured while opening the input file '%s'\n", err)
-		return
+		return nil, nil
 	}
 	defer file.Close()
 
@@ -28,26 +44,16 @@ func main() {
 		id1, err := strconv.Atoi(nums[0])
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Couldn't convert string %s to number", nums[0])
-			return
+			return nil, nil
 		}
 		ids1 = append(ids1, id1)
 		id2, err := strconv.Atoi(nums[3])
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Couldn't convert string %s to number", nums[3])
-			return
+			return nil, nil
 		}
 		ids2 = append(ids2, id2)
 	}
 
-	fmt.Println("Running part1")
-	start := time.Now()
-	part1(ids1, ids2)
-	duration := time.Until(start).Abs()
-	fmt.Printf("part1 ran succesfully\ntime: %s\n", duration.String())
-
-	fmt.Println("Running part2")
-	start = time.Now()
-	part2(ids1, ids2)
-	duration = time.Until(start).Abs()
-	fmt.Printf("part2 ran succesfully\ntime: %s\n", duration.String())
+	return ids1, ids2
 }

@@ -14,15 +14,15 @@ func main() {
 
 	fmt.Println("Running part1")
 	start := time.Now()
-	part1(numbers)
+	solution := part1(numbers)
 	duration := time.Until(start).Abs()
-	fmt.Printf("part1 ran succesfully\ntime: %s\n", duration.String())
+	fmt.Printf("Part one ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
 
 	fmt.Println("Running part2")
 	start = time.Now()
-	part2(numbers)
+	solution = part2(numbers)
 	duration = time.Until(start).Abs()
-	fmt.Printf("part2 ran succesfully\ntime: %s\n", duration.String())
+	fmt.Printf("Part two ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
 }
 
 func getNumbersFromFile(filename string) [][]int {

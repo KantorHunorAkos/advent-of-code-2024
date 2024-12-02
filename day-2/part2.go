@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"slices"
 )
 
-func part2(data [][]int) {
+func part2(data [][]int) int {
 	sum := 0
 
 	for _, row := range data {
@@ -14,7 +13,7 @@ func part2(data [][]int) {
 		}
 	}
 
-	fmt.Println(sum)
+	return sum
 }
 
 func isSafeWithProblemDampener(row []int, toleranceLevel uint) bool {
