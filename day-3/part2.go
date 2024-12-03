@@ -29,22 +29,22 @@ func part2(data string) int {
 		default:
 			if enabled {
 				tokens := strings.Split(match[3:], ",")
-				
+
 				firstNumber, err := strconv.Atoi(tokens[0][1:])
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "Couldn't convert %s to number with error: %s", tokens[0][1:], err)
 					return 0
 				}
-				
+
 				secondNumber, err := strconv.Atoi(tokens[1][:len(tokens[1])-1])
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "Couldn't convert %s to number with error: %s", tokens[1][:len(tokens[1])-1], err)
 					return 0
 				}
-				
+
 				sum += firstNumber * secondNumber
 			}
-	}
+		}
 	}
 
 	return sum

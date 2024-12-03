@@ -19,7 +19,7 @@ func part2(data [][]int) int {
 func isSafeWithProblemDampener(row []int, toleranceLevel uint) bool {
 	direction := 0
 	for i := 0; i < len(row)-1; i++ {
-		if row[i] - row[i+1] < 0 {
+		if row[i]-row[i+1] < 0 {
 			direction++
 		} else {
 			direction--
@@ -29,7 +29,7 @@ func isSafeWithProblemDampener(row []int, toleranceLevel uint) bool {
 	if direction >= 0 {
 		return isSafeAscendingWithProblemDampener(row, toleranceLevel)
 	}
-	
+
 	return isSafeDecendingWithProblemDampener(row, toleranceLevel)
 }
 

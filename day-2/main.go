@@ -34,7 +34,7 @@ func getNumbersFromFile(filename string) [][]int {
 	defer file.Close()
 
 	numbers := [][]int{}
-	
+
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
