@@ -26,7 +26,7 @@ func getInputFromFile(filename string) any {
 	file, err := os.Open(filename)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "An error occured while opening the input file(%s) '%s'\n", filename, err)
-		return true
+		return nil
 	}
 	defer file.Close()
 
