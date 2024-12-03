@@ -27,6 +27,8 @@ var mainTempl []byte
 var part1Templ []byte
 //go:embed templates/part2.go
 var part2Templ []byte
+//go:embed templates/test.go
+var testTempl []byte
 func MakeSkeletonForDay(day string) error {
 	dayNum, err := strconv.ParseUint(day, 10, strconv.IntSize)
 	if err != nil {
@@ -56,6 +58,9 @@ func MakeSkeletonForDay(day string) error {
 		return err
 	}
 	if err := createGoFile("part2.go", dirName, part2Templ); err != nil {
+		return err
+	}
+	if err := createGoFile(fmt.Sprintf("%s_test.go", dirName), dirName, testTempl); err != nil {
 		return err
 	}
 	
