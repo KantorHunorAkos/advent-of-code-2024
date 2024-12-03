@@ -20,7 +20,6 @@ func part2(data string) int {
 
 	matches := mulRegex.FindAllString(data, -1)
 	for _, match := range matches {
-
 		switch match {
 		case "do()":
 			enabled = true
