@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	data := getInputFromFile()
+	data := getInputFromFile("data.input")
 
 	fmt.Println("Running part1")
 	start := time.Now()
@@ -22,10 +22,10 @@ func main() {
 	fmt.Printf("Part two ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
 }
 
-func getInputFromFile() any {
-	file, err := os.Open("data.input")
+func getInputFromFile(filename string) any {
+	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "An error occured while opening the input file '%s'\n", err)
+		fmt.Fprintf(os.Stderr, "An error occured while opening the input file(%s) '%s'\n", filename, err)
 		return true
 	}
 	defer file.Close()
