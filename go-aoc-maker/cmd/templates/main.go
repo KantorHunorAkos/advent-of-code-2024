@@ -12,14 +12,12 @@ func main() {
 	fmt.Println("Running part1")
 	start := time.Now()
 	solution := part1(data)
-	duration := time.Until(start).Abs()
-	fmt.Printf("Part one ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
+	fmt.Printf("Part one ran succesfully\n Time: %s\n Solution: %d\n", time.Since(start), solution)
 
 	fmt.Println("Running part2")
 	start = time.Now()
 	solution = part2(data)
-	duration = time.Until(start).Abs()
-	fmt.Printf("Part two ran succesfully\n Time: %s\n Solution: %d\n", duration.String(), solution)
+	fmt.Printf("Part two ran succesfully\n Time: %s\n Solution: %d\n", time.Since(start), solution)
 }
 
 func getInputFromFile(filename string) any {
