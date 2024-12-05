@@ -4,17 +4,15 @@ type OrderingRule struct {
 	x int
 	y int
 }
+
 type OrderingRules []OrderingRule
 
-type Update []int
+type PageData struct {
+	page int
+	rulesBefore []int
+	rulesAfter []int
+}
+
+type Update []PageData
+
 type Updates []Update
-
-type Data struct {
-	rules   OrderingRules
-	updates Updates
-}
-
-type UpdateData struct {
-	rules  OrderingRules
-	update Update
-}

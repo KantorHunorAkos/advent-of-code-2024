@@ -23,7 +23,7 @@ func main() {
 	fmt.Printf("Part two ran succesfully\n Time: %s\n Solution: %d\n", time.Since(start), solution)
 }
 
-func getInputFromFile(filename string) *Data {
+func getInputFromFile(filename string) *Updates {
 	file, err := os.Open(filename)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "An error occured while opening the input file(%s) '%s'\n", filename, err)
@@ -61,17 +61,27 @@ func getInputFromFile(filename string) *Data {
 	for scanner.Scan() {
 		line := scanner.Text()
 		tokens := strings.Split(line, ",")
-		numbers := Update{}
+		update := Update{}
 		for _, token := range tokens {
 			number, err := strconv.Atoi(token)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Couldn't convert second string (%s) into a number with error: %s", token, err)
 				return nil
 			}
-			numbers = append(numbers, number)
-		}
-		updates = append(updates, numbers)
-	}
+			pageData := PageData{page: number}
+			for _, rule := range rules {
+				if rule.x == number {
+					pageData.rulesBefore = append(pageData.rulesBefore, rule.y)
+				}
 
-	return &Data{rules, updates}
+				if rule.y == number {
+					pageData.rulesAfter = append(pageData.rulesAfter, rule.x)
+				}
+			}
+			update = append(update, pageData)
+		}
+		updates = append(updates, update)
+	}
+	
+	return &updates
 }
