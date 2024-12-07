@@ -82,6 +82,6 @@ func getInputFromFile(filename string) *Updates {
 		}
 		updates = append(updates, update)
 	}
-	
+
 	return &updates
 }

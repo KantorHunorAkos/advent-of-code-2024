@@ -8,9 +8,9 @@ type OrderingRule struct {
 type OrderingRules []OrderingRule
 
 type PageData struct {
-	page int
+	page        int
 	rulesBefore []int
-	rulesAfter []int
+	rulesAfter  []int
 }
 
 type Update []PageData

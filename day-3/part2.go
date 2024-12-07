@@ -20,7 +20,7 @@ func part2(data string) int {
 	}
 
 	donts := dontRegex.FindStringIndex(data)
-	for	 donts != nil {
+	for donts != nil {
 		dos := doRegex.FindStringIndex(data[donts[1]:])
 		if dos != nil {
 			data = data[:donts[0]] + data[donts[1]:][dos[1]:]
