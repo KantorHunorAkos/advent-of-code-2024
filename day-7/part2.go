@@ -3,15 +3,27 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"sync"
 )
 
 func part2(data []Operation) int {
 	sum := 0
+	var wg sync.WaitGroup
+	var mut sync.Mutex
+
 	for _, op := range data {
-		if isSolvablePart2(op) {
-			sum += op.result
-		}
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			if isSolvablePart2(op) {
+				mut.Lock()
+				sum += op.result
+				mut.Unlock()
+			}
+		}()
 	}
+
+	wg.Wait()
 	return sum
 }
 

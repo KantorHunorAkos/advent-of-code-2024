@@ -1,12 +1,25 @@
 package main
 
+import "sync"
+
 func part1(data []Operation) int {
 	sum := 0
+	var wg sync.WaitGroup
+	var mut sync.Mutex
+
 	for _, op := range data {
-		if isSolvable(op) {
-			sum += op.result
-		}
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			if isSolvable(op) {
+				mut.Lock()
+				sum += op.result
+				mut.Unlock()
+			}
+		}()
 	}
+	wg.Wait()
+
 	return sum
 }
 
