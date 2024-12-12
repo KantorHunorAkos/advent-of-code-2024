@@ -32,10 +32,10 @@ type TestData struct {
 func getTestTable() []TestData {
 	return []TestData{
 		{"test_data_1.input", 140, 80},
-		// {"test_data_2.input", 1930, 1206},
-		// {"test_data_3.input", 772, 436},
-		// {"test_data_4.input", 2566, 946},
-		// {"test_data_5.input", 692, 236},
-		// {"test_data_6.input", 1184, 368},
+		{"test_data_2.input", 1930, 1206},
+		{"test_data_3.input", 772, 436},
+		{"test_data_4.input", 2566, 946},
+		{"test_data_5.input", 692, 236},
+		{"test_data_6.input", 1184, 368},
 	}
 }
