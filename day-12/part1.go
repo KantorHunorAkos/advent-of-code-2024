@@ -6,6 +6,10 @@ type Plot struct {
 	area, perimeter int
 }
 
+type Point struct {
+	x, y int
+}
+
 func part1(data []string) int {
 	garden := getGarden(data)
 	regions := []Plot{}
@@ -13,7 +17,7 @@ func part1(data []string) int {
 	for row := 1; row < len(garden)-1; row++ {
 		for col := 1; col < len(garden[row])-1; col++ {
 			if garden[row][col] != '*' {
-				visited := []Plot{}
+				visited := []Point{}
 				regions = append(regions, walk(garden[row][col], row, col, garden, &visited))
 			}
 		}
@@ -46,15 +50,15 @@ func getGarden(data []string) [][]byte {
 	return garden
 }
 
-func walk(label byte, x, y int, garden [][]byte, visited *[]Plot) Plot {
-	if slices.Contains(*visited, Plot{x, y}) {
+func walk(label byte, x, y int, garden [][]byte, visited *[]Point) Plot {
+	if slices.Contains(*visited, Point{x, y}) {
 		return Plot{0, 0}
 	}
 	if garden[x][y] != label {
 		return Plot{0, 1}
 	}
 
-	*visited = append(*visited, Plot{x, y})
+	*visited = append(*visited, Point{x, y})
 	garden[x][y] = '*'
 
 	up := walk(label, x-1, y, garden, visited)
