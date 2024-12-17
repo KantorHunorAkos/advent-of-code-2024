@@ -43,6 +43,7 @@ func main() {
 	solution := part1(data)
 	fmt.Printf("Part one ran succesfully\n Time: %s\n Solution: %d\n", time.Since(start), solution)
 
+	data = getInputFromFile("data.input")
 	fmt.Println("Running part2")
 	start = time.Now()
 	solution = part2(data)
